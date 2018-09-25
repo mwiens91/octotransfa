@@ -68,5 +68,5 @@ for idx, transfer_pair in enumerate(transfer_list):
 
 
 # Spit back what files remain to be transfered
-with open(uuid.uuid4 + '.txt', 'w') as f:
+with open(uuid.uuid4() + '.txt', 'w') as f:
     print(transfer_list, file=f)
