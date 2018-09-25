@@ -10,8 +10,16 @@ import uuid
 # time sensitive matters, no?
 from transfer_file_list import transfer_list
 
-# Base path to HDD mount point
-hdd_path = '/home/matt/temp'
+# Base path to the three HDD mount point
+hdd_path_options = [
+    '/path/to/disk1/mount',
+    '/path/to/disk2/mount',
+    '/path/to/disk3/mount',
+]
+
+hdd_path = hdd_path_options[0]
+hdd_path_idx = 0
+hdd_path_max_idx = len(hdd_path_options) - 1
 
 
 # Useful functions
@@ -43,7 +51,12 @@ for idx, transfer_pair in enumerate(transfer_list):
     # Check if we have space on the hard disk
     if space_left_on_hdd() < space_of_thost_subdir(source_thost_path):
         # Next HDD!
-        break
+        if hdd_path_idx < hdd_path_max_idx:
+            hdd_path_idx += 1
+            hdd_path = hdd_path_options[hdd_path_idx]
+        else:
+            # No more space :(
+            break
 
     # We have space! Yay!
     subprocess.check_call(
