@@ -60,7 +60,7 @@ for idx, transfer_pair in enumerate(transfer_list):
 
     # We have space! Yay!
     subprocess.check_call(
-        'rsync -avPL thost:%s %s' % (source_thost_path, dest_path),
+        'rsync -avPL thost05:%s %s' % (source_thost_path, dest_path),
         shell=True)
 
     # See ya!
