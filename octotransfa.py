@@ -57,8 +57,12 @@ for idx, transfer_pair in enumerate(transfer_list):
         if space_left_on_hdd() < space_of_thost_subdir(source_thost_path):
             # Next HDD!
             if hdd_path_idx < hdd_path_max_idx:
+                # Refresh the current HDD
                 hdd_path_idx += 1
                 hdd_path = hdd_path_options[hdd_path_idx]
+
+                # Refresh the destination path (so it uses the new HDD)
+                dest_path = os.path.join(hdd_path, dest_path_suffix)
             else:
                 # No more HDDs
                 break
