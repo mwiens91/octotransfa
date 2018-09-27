@@ -49,19 +49,27 @@ for idx, transfer_pair in enumerate(transfer_list):
     dest_path = os.path.join(hdd_path, dest_path_suffix)
 
     # Check if we have space on the hard disk
-    if space_left_on_hdd() < space_of_thost_subdir(source_thost_path):
-        # Next HDD!
-        if hdd_path_idx < hdd_path_max_idx:
-            hdd_path_idx += 1
-            hdd_path = hdd_path_options[hdd_path_idx]
-        else:
-            # No more space :(
-            break
+    try:
+        if space_left_on_hdd() < space_of_thost_subdir(source_thost_path):
+            # Next HDD!
+            if hdd_path_idx < hdd_path_max_idx:
+                hdd_path_idx += 1
+                hdd_path = hdd_path_options[hdd_path_idx]
+            else:
+                # No more HDDs
+                break
 
-    # We have space! Yay!
-    subprocess.check_call(
-        'rsync -avPL thost05:%s %s' % (source_thost_path, dest_path),
-        shell=True)
+        # We have space! Yay!
+        subprocess.check_call(
+            'rsync -avPL thost05:%s %s' % (source_thost_path, dest_path),
+            shell=True)
+    except Exception as e:
+        # Print the exception
+        print("An exception occurred!")
+        print(e)
+
+        # Exit the loop
+        break
 
     # See ya!
     del transfer_list[idx]
