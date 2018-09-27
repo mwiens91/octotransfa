@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
 from __future__ import print_function
+import datetime
 import os
 import subprocess
-import uuid
 
 # Change the import directory here to specify the transfer list ...
 # and, yes, of course this isn't how you should be doing things. But
@@ -68,5 +68,11 @@ for idx, transfer_pair in enumerate(transfer_list):
 
 
 # Spit back what files remain to be transfered
-with open(uuid.uuid4() + '.txt', 'w') as f:
+output_file_name = (
+    'transfer_file_list_'
+    + datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    + '.py'
+)
+
+with open(output_file_name, 'w') as f:
     print(transfer_list, file=f)
