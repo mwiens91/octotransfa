@@ -10,6 +10,10 @@ import subprocess
 # time sensitive matters, no?
 from transfer_file_list import transfer_list
 
+# ANSI escape for bold
+ANSI_BOLD = '\033[1m'
+ANSI_END = '\033[0m'
+
 # Base path to the three HDD mount point
 hdd_path_options = [
     '/path/to/disk1/mount',
@@ -60,7 +64,13 @@ for idx, transfer_pair in enumerate(transfer_list):
                 break
 
         # We have space! Yay!
-        print("Transfering %s -> %s" % (source_thost_path, dest_path))
+        print()
+        print(
+            ANSI_BOLD
+            + "Transfering thost05:%s -> %s" % (source_thost_path, dest_path)
+            + ANSI_END
+        )
+        print()
 
         subprocess.check_call(
             'rsync -avPL thost05:%s %s' % (source_thost_path, dest_path),
