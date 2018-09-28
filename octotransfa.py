@@ -14,11 +14,11 @@ from transfer_file_list import transfer_list
 ANSI_BOLD = '\033[1m'
 ANSI_END = '\033[0m'
 
-# Base path to the three HDD mount point
+# Base path to the HDD mount points
 hdd_path_options = [
-    '/path/to/disk1/mount',
-    '/path/to/disk2/mount',
-    '/path/to/disk3/mount',
+    '/path/to/disk1/mount/point',
+    '/path/to/disk2/mount/point',
+    '/path/to/disk3/mount/point',
 ]
 
 hdd_path = hdd_path_options[0]
