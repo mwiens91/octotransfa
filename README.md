@@ -1,4 +1,4 @@
-[![Python version](https://img.shields.io/badge/python-2.7%20|%203.5%20|%203.6%20|%203.7-blue.svg)](https://github.com/mwiens91/saltant)
+[![Python version](https://img.shields.io/badge/python-2.7%20|%203.5%20|%203.6%20|%203.7-blue.svg)](https://github.com/mwiens91/octotransfa)
 
 # octotransfa
 
