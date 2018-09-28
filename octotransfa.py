@@ -2,6 +2,7 @@
 
 from __future__ import print_function
 import datetime
+import copy
 import os
 import subprocess
 
@@ -45,6 +46,8 @@ def space_left_on_hdd():
 
     return int(output.split()[-1])
 
+# Keep track of what remains to be transfered
+transfer_remaining_list = copy.deepcopy(transfer_list)
 
 # Transfer stuff
 for idx, transfer_pair in enumerate(transfer_list):
@@ -92,7 +95,7 @@ for idx, transfer_pair in enumerate(transfer_list):
         break
 
     # See ya!
-    del transfer_list[idx]
+    del transfer_remaining_list[idx]
 
 
 # Spit back what files remain to be transfered
@@ -104,4 +107,4 @@ output_file_name = (
 
 with open(output_file_name, 'w') as f:
     print('transfer_list = ', end='', file=f)
-    print(transfer_list, file=f)
+    print(transfer_remaining_list, file=f)
