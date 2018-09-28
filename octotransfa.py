@@ -103,4 +103,5 @@ output_file_name = (
 )
 
 with open(output_file_name, 'w') as f:
+    print('transfer_list = ', end='', file=f)
     print(transfer_list, file=f)
