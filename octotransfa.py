@@ -76,6 +76,10 @@ for idx, transfer_pair in enumerate(transfer_list):
         )
         print()
 
+        # Make sure the parent directories exist on the destination
+        subprocess.check_call('mkdir -p %s' % (dest_path), shell=True)
+
+        # Transfer!
         subprocess.check_call(
             'rsync -avPL thost05:%s %s' % (source_thost_path, dest_path),
             shell=True)
