@@ -48,6 +48,7 @@ def space_left_on_hdd():
 
 # Keep track of what remains to be transfered
 transfer_remaining_list = copy.deepcopy(transfer_list)
+indices_processed = []
 
 # Transfer stuff
 for idx, transfer_pair in enumerate(transfer_list):
@@ -94,11 +95,14 @@ for idx, transfer_pair in enumerate(transfer_list):
         # Exit the loop
         break
 
-    # See ya!
-    del transfer_remaining_list[idx]
+    # Mark this as processed
+    indices_processed += [idx]
 
 
 # Spit back what files remain to be transfered
+while indices_processed:
+    del transfer_remaining_list[indices_processed.pop()]
+
 output_file_name = (
     'transfer_file_list_'
     + datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
