@@ -3,5 +3,5 @@
 # octotransfa
 
 Okay, fine. There *is* something to see here (you got me). This is a
-quick-and-dirty file transfer script to download some data off a on-prem
-server to some external HDDs (or SSDs, I guess).
+quick-and-dirty file transfer script to download some data off an
+on-prem server to some external HDDs (or SSDs, I guess).
